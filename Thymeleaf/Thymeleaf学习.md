@@ -1,5 +1,7 @@
 # Thymeleaf学习
 
+官网文档：https://www.thymeleaf.org
+
 ## 什么是Thymeleaf？
 
 Thymeleaf 是一个现代服务器端 Java 模板引擎 ，
@@ -385,9 +387,59 @@ null字面量吗，在页面直接使用，也可以判断数据是否为null.�
 
 **th:attr**        为标签中的任意属性设置属性值
 
+```html
+<form action="/hello.html" th:attr="action=${myaction}">   替换掉原有属性的值
+</form>
+也可以选择更具体的标签
+th:value
+th:text
+th:onclck
+等大部分html标签都有
+```
+
 **th:alt-title**  同时为alt与tiele属性赋值
 
 **th:lang-xmllang** 同时为lang、xml：lang属性赋值
+
+**th:each**  迭代数据，如数组 List Map等
+
+```java
+后端
+Model model= new Model();
+List<Students> list=new List<>();
+list.add(new Students(1,"wang",18));
+list.add(new Students(2,"wang",18));
+list.add(new Students(3,"wang",18));
+list.add(new Students(4,"wang",18));
+model.addAttribute("students",list)
+return model;
+前端：
+<tr th:each="mystu:${students}">
+<td th:text={mystu.id}></td>
+<td th:text={mystu.name}></td>
+<td th:text={mystu.age}></td>
+</tr>
+```
+
+**th:if** 条件为true时，显示模板元素，否则不显示
+
+**th:unless**  条件为false时显示模板元素，否则不显示
+
+**th:switch**  与java中的switch语句等效，有条件的显示匹配内容
+
+**th:case**  配黑th:switch使用
+
+**th:with**  定义局部变量
+
+**th:inline** 禁用内联样式，内联js,内联css
+
+### 模板使用
+
+模板就是公用资源，可以多次重复使用的内容。经常把页眉，页脚菜单做成模板，在各个其他页面使用
+
+使用方式：先定义，在使用。可以在当前页面和其他页面中使用
+
+
 
 **th:fragment** 定义模板片段
 
@@ -395,7 +447,41 @@ null字面量吗，在页面直接使用，也可以判断数据是否为null.�
 
 **th:replace** 将被引用的模板片段插入到自己的标签体中
 
-**thinclude** 类似于th:insert ，而不是出入片段它值插入此片段的内容
+**th:include** 类似于th:insert ，而不是出入片段它值插入此片段的内容
+
+**th:remove**  删除模板中的某些代码片段
+
+模板定义：
+
+```html
+<div th:fragment="模板名称">
+    模板内容
+</div>
+```
+
+引用模板：
+
+```html
+1.把模板插入到当前位置
+<div insert="模板文件名称::模板名称">
+    其他内容
+</div>
+2.把模板替换当前标签内容
+<div replace="模板文件名称::模板名称">
+    其他内容
+</div>
+3.把模板添加到当前位置（已淘汰）
+<div include="模板文件名称::模板名称">
+    其他内容
+</div>
+4.模板删除
+1）all 删除包含标签及其所有子项
+
+```
+
+
+
+
 
 
 
