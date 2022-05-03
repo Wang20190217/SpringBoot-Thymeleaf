@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>路径</title>
+</head>
+<body>
+localhost:/exp/link
+<a th:href="@{var1}">跳转连接</a>  跳转到当前目录html文件   localhost:/exp/var1
+<a th:href="@{./var1(id=1001)}">跳转连接</a>  跳转到当前目录html文件 localhost:/exp/var1
+<a th:href="@{../user/var1}">跳转连接</a>  跳转到上一级目录html文件 localhost:/user/var1
+<a th:href="@{/user/var1}">跳转连接</a>  直接从根目录改变
+<a th:href="@{http://www.baidu.com}">跳转连接</a>  直接跳转指定地址
+</body>
+</html>

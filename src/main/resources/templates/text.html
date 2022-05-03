@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="学习模板">文本数据</p>
+<p th:text="'hello thymeleaf'">Hello Thymeleaf</p>
+<p th:text="'宝马'+'良驹'">战马</p>
+<p th:text="'学习'+${info}">学习java</p>
+<p th:text="true">boolean文本</p>
+<p th:text="123">数字也可以看作文本数据</p>
+<p th:text="|欢迎使用${info}|">文本数据</p>
+<p th:text="您好+|${n1},${n2}|">文本数据</p>
+</body>
+</html>
